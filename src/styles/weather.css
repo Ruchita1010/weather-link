@@ -1,0 +1,122 @@
+.weather {
+  flex: 2 0 400px;
+  padding: 2vmax 2.4vmax;
+}
+
+#date {
+  font-size: clamp(1rem, 1.4vmax, 1.8rem);
+  margin-bottom: 1vmax;
+}
+
+#city {
+  font-size: clamp(1.4rem, 2vmax, 3rem);
+}
+
+#temp {
+  font-size: clamp(3rem, 6vmax, 8rem);
+}
+
+.toggle-unit-btn {
+  padding: 6px;
+  font-size: clamp(0.8rem, 1.6vmax, 1.6rem);
+  border-radius: 4px;
+  border: 2px solid var(--secondary);
+  outline: none;
+}
+
+.toggle-unit-btn:hover {
+  cursor: pointer;
+}
+
+#description {
+  font-size: clamp(1.8rem, 2.2vmax, 4rem);
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2vmax;
+  margin: 2.2vmax 0;
+}
+
+.weather-detail {
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary-transparent);
+  border-radius: 6px;
+}
+
+.material-symbols-outlined {
+  display: grid;
+  place-content: center;
+  font-variation-settings: 'FILL' 1, 'wght' 200, 'GRAD' 200, 'opsz' 48;
+}
+
+.weather-detail-icon {
+  height: 100%;
+  padding: 4px;
+  color: var(--primary);
+  font-size: clamp(2rem, 3vmax, 5rem);
+}
+
+.weather-data {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 6px;
+}
+
+.label {
+  font-size: clamp(0.8rem, 1.2vmax, 2rem);
+  white-space: nowrap;
+}
+
+.value {
+  font-size: clamp(1.4rem, 2vmax, 4rem);
+  word-break: break-all;
+}
+
+#search {
+  height: clamp(1.8rem, 2.4vmax, 4rem);
+  display: flex;
+  place-items: center start;
+}
+
+#search-btn {
+  height: 100%;
+  border: none;
+  background-color: var(--primary);
+  border-bottom: 2px solid var(--secondary);
+}
+
+#search-icon {
+  font-size: clamp(1.4rem, 2vmax, 5rem);
+  color: var(--secondary);
+  font-variation-settings: 'FILL' 1, 'wght' 800, 'GRAD' 200, 'opsz' 48;
+}
+
+input[type='search'] {
+  height: 100%;
+  padding: 8px;
+  font-size: clamp(1rem, 1.4vmax, 2rem);
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--secondary);
+  outline: none;
+}
+
+/* For Tablet and below */
+@media (max-width: 768px) {
+  #date {
+    margin-bottom: 1.8vmax;
+  }
+
+  .weather-details {
+    margin: 4vmax 0;
+  }
+
+  #search {
+    margin: 6vmax 0;
+  }
+}
