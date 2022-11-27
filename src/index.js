@@ -1,7 +1,8 @@
+import { listenForEvents } from './modules/listeners';
+import { handleGeolocationError } from './modules/utils';
+import { getWeatherFromCurrentLocation } from './modules/weather';
 import './styles/main.css';
 import './styles/weather.css';
-import { getWeatherFromCurrentLocation } from './modules/weather';
-import { handleGeolocationError } from './modules/utils';
 
 const getUserLocation = (position) => {
   const lat = position.coords.latitude;
@@ -18,6 +19,7 @@ const init = () => {
   } else {
     console.log('Your browser does not support geolocation!');
   }
+  listenForEvents();
 };
 
 init();

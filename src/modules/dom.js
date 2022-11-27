@@ -16,8 +16,13 @@ const displayWeather = (currWeather, cityName = 'Tokyo') => {
   windSpeed.textContent = `${parseFloat(currWeather.wind_speed).toFixed(2)}m/s`;
 };
 
+const getSearchBoxInput = () => {
+  const city = document.querySelector('#search-box').value;
+  return city.trim();
+};
+
 const render = (weather, city) => {
   displayWeather(weather.current, city);
 };
 
-export { render };
+export { getSearchBoxInput, render };

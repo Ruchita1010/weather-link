@@ -1,5 +1,5 @@
-import { fetchCityName, fetchWeather } from './apiFetchers';
-import { render } from './dom';
+import { fetchCityName, fetchLatAndLong, fetchWeather } from './apiFetchers';
+import { getSearchBoxInput, render } from './dom';
 
 const getWeatherFromCurrentLocation = async (lat, lon) => {
   const city = await fetchCityName(lat, lon);
@@ -7,4 +7,12 @@ const getWeatherFromCurrentLocation = async (lat, lon) => {
   render(weather, city);
 };
 
-export { getWeatherFromCurrentLocation };
+const getWeatherForSearchedCity = async (e) => {
+  e.preventDefault();
+  const searchedCity = getSearchBoxInput();
+  const [lat, lon, cityName] = await fetchLatAndLong(searchedCity);
+  const weather = await fetchWeather(lat, lon);
+  render(weather, cityName);
+};
+
+export { getWeatherFromCurrentLocation, getWeatherForSearchedCity };
