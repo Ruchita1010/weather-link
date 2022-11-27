@@ -13,12 +13,12 @@
     <div class="container">
       <div class="weather">
         <div id="date">Monday, Nov 23</div>
-        <div id="city">In Tokyo</div>
-        <div id="temp">
-          35 &deg;C
+        <div id="city"></div>
+        <div id="temp-wrapper">
+          <span id="temp"></span>
           <button class="btn toggle-unit-btn">&deg; F</button>
         </div>
-        <div id="description">Light Rain</div>
+        <div id="description"></div>
         <div class="weather-details">
           <div class="weather-detail">
             <span class="material-symbols-outlined weather-detail-icon">
@@ -26,7 +26,7 @@
             </span>
             <div class="weather-data">
               <span class="label">Feels like</span>
-              <span class="value" id="feels-like">45&deg;C</span>
+              <span class="value" id="feels-like"></span>
             </div>
           </div>
           <div class="weather-detail">
@@ -35,7 +35,7 @@
             </span>
             <div class="weather-data">
               <span class="label">Cloudiness</span>
-              <span class="value" id="cloudiness">45%</span>
+              <span class="value" id="cloudiness"></span>
             </div>
           </div>
           <div class="weather-detail">
@@ -44,7 +44,7 @@
             </span>
             <div class="weather-data">
               <span class="label">Humidity</span>
-              <span class="value" id="humidity">45%</span>
+              <span class="value" id="humidity"></span>
             </div>
           </div>
           <div class="weather-detail">
@@ -53,17 +53,21 @@
             </span>
             <div class="weather-data">
               <span class="label">Wind speed</span>
-              <span class="value" id="wind-speed">5 mph</span>
+              <span class="value" id="wind-speed"></span>
             </div>
           </div>
         </div>
-        <form class="user-input" id="search">
+        <form class="user-input" id="city-weather-search">
           <button type="submit" class="btn" id="search-btn">
             <span class="material-symbols-outlined" id="search-icon">
               search
             </span>
           </button>
-          <input type="search" id="search-box" placeholder="e.g. Tokyo" />
+          <input
+            type="search"
+            id="search-box"
+            placeholder="e.g. Tokyo"
+            required />
         </form>
       </div>
       <div class="watch-cities"></div>

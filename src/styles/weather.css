@@ -12,7 +12,7 @@
   font-size: clamp(1.4rem, 2vmax, 3rem);
 }
 
-#temp {
+#temp-wrapper {
   font-size: clamp(3rem, 6vmax, 8rem);
 }
 
@@ -77,7 +77,7 @@
   word-break: break-all;
 }
 
-#search {
+#city-weather-search {
   height: clamp(1.8rem, 2.4vmax, 4rem);
   display: flex;
   place-items: center start;
@@ -88,6 +88,10 @@
   border: none;
   background-color: var(--primary);
   border-bottom: 2px solid var(--secondary);
+}
+
+#search-btn:hover {
+  cursor: pointer;
 }
 
 #search-icon {
