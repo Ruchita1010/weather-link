@@ -1,4 +1,7 @@
-const displayWeather = (currWeather, cityName = 'Tokyo') => {
+import { getDateAndDay } from './utils';
+
+const displayWeather = (cityName = 'Tokyo', currWeather, timezone) => {
+  const date = document.querySelector('#date');
   const city = document.querySelector('#city');
   const temp = document.querySelector('#temp');
   const description = document.querySelector('#description');
@@ -7,8 +10,10 @@ const displayWeather = (currWeather, cityName = 'Tokyo') => {
   const humidity = document.querySelector('#humidity');
   const windSpeed = document.querySelector('#wind-speed');
 
+  const [currDate, currWeekday] = getDateAndDay(currWeather.dt, timezone);
+  date.textContent = `${currWeekday}, ${currDate}`;
   city.textContent = `In ${cityName}`;
-  temp.innerHTML = `${parseFloat(currWeather.temp).toFixed(1)} ℃`;
+  temp.textContent = `${parseFloat(currWeather.temp).toFixed(1)} ℃`;
   description.textContent = currWeather.weather[0].description;
   feelsLike.textContent = `${parseFloat(currWeather.feels_like).toFixed(1)}℃`;
   cloudiness.textContent = `${parseFloat(currWeather.clouds).toFixed(0)}%`;
@@ -22,7 +27,7 @@ const getSearchBoxInput = () => {
 };
 
 const render = (weather, city) => {
-  displayWeather(weather.current, city);
+  displayWeather(city, weather.current, weather.timezone_offset);
 };
 
 export { getSearchBoxInput, render };
