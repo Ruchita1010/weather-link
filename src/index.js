@@ -3,6 +3,7 @@ import { handleGeolocationError } from './modules/utils';
 import { getWeatherFromCurrentLocation } from './modules/weather';
 import './styles/main.css';
 import './styles/weather.css';
+import './styles/daily-forecast.css';
 
 const getUserLocation = (position) => {
   const lat = position.coords.latitude;

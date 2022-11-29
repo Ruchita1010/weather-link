@@ -21,6 +21,45 @@ const displayWeather = (cityName = 'Tokyo', currWeather, timezone) => {
   windSpeed.textContent = `${parseFloat(currWeather.wind_speed).toFixed(2)}m/s`;
 };
 
+const displayDailyForecast = (dailyWeather, timezone) => {
+  const weekDaysForecast = document.querySelector('#week-days-forecast');
+
+  // to prevent new data of searched place getting appended
+  weekDaysForecast.textContent = '';
+
+  // removes the current day (curr day will be the first elem in the array)
+  dailyWeather.shift();
+
+  dailyWeather.forEach((dayWeather) => {
+    const weekDayForecast = document.createElement('div');
+    weekDayForecast.classList.add('week-day-forecast');
+
+    let [, weekDay] = getDateAndDay(dayWeather.dt, timezone);
+    // shorten the week day name
+    weekDay = weekDay.slice(0, 3);
+
+    // requiring all the images files
+    const images = require.context(
+      '../assets/openweathermap/',
+      false,
+      /\.svg$/
+    );
+
+    // creating new elem for each day's weather data
+    weekDayForecast.innerHTML = `
+      <div class="week-day">${weekDay}</div>
+      <img src="${images(`./${dayWeather.weather[0].icon}.svg`)}" 
+      class="forecast-weather-icon">
+      </img>
+      <div class="daily-temp">
+      ${parseFloat(dayWeather.temp.min).toFixed(0)}℃ 
+      ~ ${parseFloat(dayWeather.temp.max).toFixed(0)}℃ 
+      </div>
+    `;
+    weekDaysForecast.appendChild(weekDayForecast);
+  });
+};
+
 const getSearchBoxInput = () => {
   const city = document.querySelector('#search-box').value;
   return city.trim();
@@ -28,6 +67,7 @@ const getSearchBoxInput = () => {
 
 const render = (weather, city) => {
   displayWeather(city, weather.current, weather.timezone_offset);
+  displayDailyForecast(weather.daily, weather.timezone_offset);
 };
 
 export { getSearchBoxInput, render };

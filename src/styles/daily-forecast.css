@@ -1,0 +1,43 @@
+#daily-forecast {
+  padding: 1vmax;
+  margin-top: 3vmax;
+  background-color: var(--secondary-transparent);
+  border-radius: 6px;
+}
+
+#forecast-title {
+  margin-bottom: 1vmax;
+  font-size: clamp(1rem, 1.5vmax, 2rem);
+}
+
+#week-days-forecast {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 0.6vmax;
+}
+
+.week-day-forecast {
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border: 1px solid var(--secondary);
+  border-radius: 5px;
+}
+
+.week-day {
+  font-size: clamp(0.5rem, 1.5vmax, 1.4rem);
+}
+
+.forecast-weather-icon {
+  width: 90%;
+}
+
+.daily-temp {
+  font-size: clamp(0.4rem, 1.2vmax, 1rem);
+}
+
+@media (max-width: 768px) {
+  #daily-forecast {
+    margin: 8vmax 0;
+  }
+}
