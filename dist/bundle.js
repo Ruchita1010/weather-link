@@ -174,6 +174,16 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/assets/bg-gifs sync \\.gif$":
+/*!******************************************************!*\
+  !*** ./src/assets/bg-gifs/ sync nonrecursive \.gif$ ***!
+  \******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("var map = {\n\t\"./Atmosphere.gif\": \"./src/assets/bg-gifs/Atmosphere.gif\",\n\t\"./Clear.gif\": \"./src/assets/bg-gifs/Clear.gif\",\n\t\"./Clouds.gif\": \"./src/assets/bg-gifs/Clouds.gif\",\n\t\"./Drizzle.gif\": \"./src/assets/bg-gifs/Drizzle.gif\",\n\t\"./Rain.gif\": \"./src/assets/bg-gifs/Rain.gif\",\n\t\"./Snow.gif\": \"./src/assets/bg-gifs/Snow.gif\",\n\t\"./Thunderstorm.gif\": \"./src/assets/bg-gifs/Thunderstorm.gif\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\treturn __webpack_require__(id);\n}\nfunction webpackContextResolve(req) {\n\tif(!__webpack_require__.o(map, req)) {\n\t\tvar e = new Error(\"Cannot find module '\" + req + \"'\");\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn map[req];\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./src/assets/bg-gifs sync \\\\.gif$\";\n\n//# sourceURL=webpack://weather-app/./src/assets/bg-gifs/_sync_nonrecursive_\\.gif$?");
+
+/***/ }),
+
 /***/ "./src/assets/openweathermap sync \\.svg$":
 /*!*************************************************************!*\
   !*** ./src/assets/openweathermap/ sync nonrecursive \.svg$ ***!
@@ -213,7 +223,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getSearchBoxInput\": () => (/* binding */ getSearchBoxInput),\n/* harmony export */   \"render\": () => (/* binding */ render)\n/* harmony export */ });\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ \"./src/modules/utils.js\");\n\r\n\r\nconst displayWeather = (cityName = 'Tokyo', currWeather, timezone) => {\r\n  const date = document.querySelector('#date');\r\n  const city = document.querySelector('#city');\r\n  const temp = document.querySelector('#temp');\r\n  const description = document.querySelector('#description');\r\n  const feelsLike = document.querySelector('#feels-like');\r\n  const cloudiness = document.querySelector('#cloudiness');\r\n  const humidity = document.querySelector('#humidity');\r\n  const windSpeed = document.querySelector('#wind-speed');\r\n\r\n  const [currDate, currWeekday] = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.getDateAndDay)(currWeather.dt, timezone);\r\n  date.textContent = `${currWeekday}, ${currDate}`;\r\n  city.textContent = `In ${cityName}`;\r\n  temp.textContent = `${parseFloat(currWeather.temp).toFixed(1)} ℃`;\r\n  description.textContent = currWeather.weather[0].description;\r\n  feelsLike.textContent = `${parseFloat(currWeather.feels_like).toFixed(1)}℃`;\r\n  cloudiness.textContent = `${parseFloat(currWeather.clouds).toFixed(0)}%`;\r\n  humidity.textContent = `${parseFloat(currWeather.humidity).toFixed(0)}%`;\r\n  windSpeed.textContent = `${parseFloat(currWeather.wind_speed).toFixed(2)}m/s`;\r\n};\r\n\r\nconst displayDailyForecast = (dailyWeather, timezone) => {\r\n  const weekDaysForecast = document.querySelector('#week-days-forecast');\r\n\r\n  // to prevent new data of searched place getting appended\r\n  weekDaysForecast.textContent = '';\r\n\r\n  // removes the current day (curr day will be the first elem in the array)\r\n  dailyWeather.shift();\r\n\r\n  dailyWeather.forEach((dayWeather) => {\r\n    const weekDayForecast = document.createElement('div');\r\n    weekDayForecast.classList.add('week-day-forecast');\r\n\r\n    let [, weekDay] = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.getDateAndDay)(dayWeather.dt, timezone);\r\n    // shorten the week day name\r\n    weekDay = weekDay.slice(0, 3);\r\n\r\n    // requiring all the images files\r\n    const images = __webpack_require__(\"./src/assets/openweathermap sync \\\\.svg$\");\r\n\r\n    // creating new elem for each day's weather data\r\n    weekDayForecast.innerHTML = `\r\n      <div class=\"week-day\">${weekDay}</div>\r\n      <img src=\"${images(`./${dayWeather.weather[0].icon}.svg`)}\" \r\n      class=\"forecast-weather-icon\">\r\n      </img>\r\n      <div class=\"daily-temp\">\r\n      ${parseFloat(dayWeather.temp.min).toFixed(0)}℃ \r\n      ~ ${parseFloat(dayWeather.temp.max).toFixed(0)}℃ \r\n      </div>\r\n    `;\r\n    weekDaysForecast.appendChild(weekDayForecast);\r\n  });\r\n};\r\n\r\nconst getSearchBoxInput = () => {\r\n  const city = document.querySelector('#search-box').value;\r\n  return city.trim();\r\n};\r\n\r\nconst render = (weather, city) => {\r\n  displayWeather(city, weather.current, weather.timezone_offset);\r\n  displayDailyForecast(weather.daily, weather.timezone_offset);\r\n};\r\n\r\n\r\n\n\n//# sourceURL=webpack://weather-app/./src/modules/dom.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getSearchBoxInput\": () => (/* binding */ getSearchBoxInput),\n/* harmony export */   \"render\": () => (/* binding */ render)\n/* harmony export */ });\n/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ \"./src/modules/utils.js\");\n\r\n\r\nconst displayWeather = (cityName = 'Tokyo', currWeather, timezone) => {\r\n  const date = document.querySelector('#date');\r\n  const city = document.querySelector('#city');\r\n  const temp = document.querySelector('#temp');\r\n  const description = document.querySelector('#description');\r\n  const feelsLike = document.querySelector('#feels-like');\r\n  const cloudiness = document.querySelector('#cloudiness');\r\n  const humidity = document.querySelector('#humidity');\r\n  const windSpeed = document.querySelector('#wind-speed');\r\n\r\n  const [currDate, currWeekday] = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.getDateAndDay)(currWeather.dt, timezone);\r\n  date.textContent = `${currWeekday}, ${currDate}`;\r\n  city.textContent = `In ${cityName}`;\r\n  temp.textContent = `${parseFloat(currWeather.temp).toFixed(1)} ℃`;\r\n  description.textContent = currWeather.weather[0].description;\r\n  feelsLike.textContent = `${parseFloat(currWeather.feels_like).toFixed(1)}℃`;\r\n  cloudiness.textContent = `${parseFloat(currWeather.clouds).toFixed(0)}%`;\r\n  humidity.textContent = `${parseFloat(currWeather.humidity).toFixed(0)}%`;\r\n  windSpeed.textContent = `${parseFloat(currWeather.wind_speed).toFixed(2)}m/s`;\r\n};\r\n\r\nconst displayDailyForecast = (dailyWeather, timezone) => {\r\n  const weekDaysForecast = document.querySelector('#week-days-forecast');\r\n\r\n  // to prevent new data of searched place getting appended\r\n  weekDaysForecast.textContent = '';\r\n\r\n  // removes the current day (curr day will be the first elem in the array)\r\n  dailyWeather.shift();\r\n\r\n  dailyWeather.forEach((dayWeather) => {\r\n    const weekDayForecast = document.createElement('div');\r\n    weekDayForecast.classList.add('week-day-forecast');\r\n\r\n    let [, weekDay] = (0,_utils__WEBPACK_IMPORTED_MODULE_0__.getDateAndDay)(dayWeather.dt, timezone);\r\n    // shorten the week day name\r\n    weekDay = weekDay.slice(0, 3);\r\n\r\n    // requiring all the images files\r\n    const images = __webpack_require__(\"./src/assets/openweathermap sync \\\\.svg$\");\r\n\r\n    // creating new elem for each day's weather data\r\n    weekDayForecast.innerHTML = `\r\n      <div class=\"week-day\">${weekDay}</div>\r\n      <img src=\"${images(`./${dayWeather.weather[0].icon}.svg`)}\" \r\n      class=\"forecast-weather-icon\">\r\n      </img>\r\n      <div class=\"daily-temp\">\r\n      ${parseFloat(dayWeather.temp.min).toFixed(0)}℃ \r\n      ~ ${parseFloat(dayWeather.temp.max).toFixed(0)}℃ \r\n      </div>\r\n    `;\r\n    weekDaysForecast.appendChild(weekDayForecast);\r\n  });\r\n};\r\n\r\nconst changeBackgroundGIF = (mainWeather) => {\r\n  const gifs = __webpack_require__(\"./src/assets/bg-gifs sync \\\\.gif$\");\r\n  document.body.style.backgroundImage = `url(${gifs(`./${mainWeather}.gif`)})`;\r\n};\r\n\r\nconst getSearchBoxInput = () => {\r\n  const city = document.querySelector('#search-box').value;\r\n  return city.trim();\r\n};\r\n\r\nconst render = (weather, city) => {\r\n  displayWeather(city, weather.current, weather.timezone_offset);\r\n  changeBackgroundGIF(weather.current.weather[0].main);\r\n  displayDailyForecast(weather.daily, weather.timezone_offset);\r\n};\r\n\r\n\r\n\n\n//# sourceURL=webpack://weather-app/./src/modules/dom.js?");
 
 /***/ }),
 
@@ -258,6 +268,72 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("module.exports = __webpack_require__.p + \"Atmosphere.gif\";\n\n//# sourceURL=webpack://weather-app/./src/assets/bg-gifs/Atmosphere.gif?");
+
+/***/ }),
+
+/***/ "./src/assets/bg-gifs/Clear.gif":
+/*!**************************************!*\
+  !*** ./src/assets/bg-gifs/Clear.gif ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"Clear.gif\";\n\n//# sourceURL=webpack://weather-app/./src/assets/bg-gifs/Clear.gif?");
+
+/***/ }),
+
+/***/ "./src/assets/bg-gifs/Clouds.gif":
+/*!***************************************!*\
+  !*** ./src/assets/bg-gifs/Clouds.gif ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"Clouds.gif\";\n\n//# sourceURL=webpack://weather-app/./src/assets/bg-gifs/Clouds.gif?");
+
+/***/ }),
+
+/***/ "./src/assets/bg-gifs/Drizzle.gif":
+/*!****************************************!*\
+  !*** ./src/assets/bg-gifs/Drizzle.gif ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"Drizzle.gif\";\n\n//# sourceURL=webpack://weather-app/./src/assets/bg-gifs/Drizzle.gif?");
+
+/***/ }),
+
+/***/ "./src/assets/bg-gifs/Rain.gif":
+/*!*************************************!*\
+  !*** ./src/assets/bg-gifs/Rain.gif ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"Rain.gif\";\n\n//# sourceURL=webpack://weather-app/./src/assets/bg-gifs/Rain.gif?");
+
+/***/ }),
+
+/***/ "./src/assets/bg-gifs/Snow.gif":
+/*!*************************************!*\
+  !*** ./src/assets/bg-gifs/Snow.gif ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"Snow.gif\";\n\n//# sourceURL=webpack://weather-app/./src/assets/bg-gifs/Snow.gif?");
+
+/***/ }),
+
+/***/ "./src/assets/bg-gifs/Thunderstorm.gif":
+/*!*********************************************!*\
+  !*** ./src/assets/bg-gifs/Thunderstorm.gif ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"Thunderstorm.gif\";\n\n//# sourceURL=webpack://weather-app/./src/assets/bg-gifs/Thunderstorm.gif?");
 
 /***/ }),
 

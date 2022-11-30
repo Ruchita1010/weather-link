@@ -60,6 +60,11 @@ const displayDailyForecast = (dailyWeather, timezone) => {
   });
 };
 
+const changeBackgroundGIF = (mainWeather) => {
+  const gifs = require.context('../assets/bg-gifs/', false, /\.gif$/);
+  document.body.style.backgroundImage = `url(${gifs(`./${mainWeather}.gif`)})`;
+};
+
 const getSearchBoxInput = () => {
   const city = document.querySelector('#search-box').value;
   return city.trim();
@@ -67,6 +72,7 @@ const getSearchBoxInput = () => {
 
 const render = (weather, city) => {
   displayWeather(city, weather.current, weather.timezone_offset);
+  changeBackgroundGIF(weather.current.weather[0].main);
   displayDailyForecast(weather.daily, weather.timezone_offset);
 };
 
