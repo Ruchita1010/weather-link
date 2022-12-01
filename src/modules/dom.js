@@ -110,6 +110,11 @@ const changeTextInToggleUnitBtn = () => {
   toggleUnitBtn.textContent = '℉ | mph';
 };
 
+const clearSearchBox = () => {
+  const searchBox = document.querySelector('#search-box');
+  searchBox.value = '';
+};
+
 const getSearchBoxInput = () => {
   const city = document.querySelector('#search-box').value;
   return city.trim();
@@ -123,6 +128,7 @@ const render = (weather, city) => {
 
 export {
   changeTextInToggleUnitBtn,
+  clearSearchBox,
   displayWeatherWithChangeUnits,
   getNextUnits,
   getSearchBoxInput,

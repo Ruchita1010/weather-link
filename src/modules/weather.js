@@ -1,6 +1,7 @@
 import { fetchCityName, fetchLatAndLong, fetchWeather } from './apiFetchers';
 import {
   changeTextInToggleUnitBtn,
+  clearSearchBox,
   displayWeatherWithChangeUnits,
   getNextUnits,
   getSearchBoxInput,
@@ -32,6 +33,7 @@ const getWeatherFromCurrentLocation = async (lat, lon) => {
 const getWeatherForSearchedCity = async (e) => {
   e.preventDefault();
   const searchedCity = getSearchBoxInput();
+  clearSearchBox();
   const [lat, lon, cityName] = await fetchLatAndLong(searchedCity);
   const weather = await fetchWeather(lat, lon);
   render(weather, cityName);
