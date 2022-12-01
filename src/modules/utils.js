@@ -40,8 +40,18 @@ const getDateAndDay = (dt, timezone) => {
   **/
 };
 
+const getSymbolForUnits = (units) => {
+  let tempUnit = '℃',
+    windSpeedUnit = 'm/s';
+  if (units === 'imperial') {
+    tempUnit = '℉';
+    windSpeedUnit = 'mph';
+  }
+  return [tempUnit, windSpeedUnit];
+};
+
 const handleGeolocationError = (err) => {
   console.log(err.message);
 };
 
-export { getDateAndDay, handleGeolocationError };
+export { getDateAndDay, getSymbolForUnits, handleGeolocationError };

@@ -65,6 +65,51 @@ const changeBackgroundGIF = (mainWeather) => {
   document.body.style.backgroundImage = `url(${gifs(`./${mainWeather}.gif`)})`;
 };
 
+const displayWeatherWithChangeUnits = (
+  weather,
+  tempUnitSymbol,
+  windspeedUnitSymbol
+) => {
+  const temp = document.querySelector('#temp');
+  const feelsLike = document.querySelector('#feels-like');
+  const windSpeed = document.querySelector('#wind-speed');
+  temp.textContent = `
+  ${parseFloat(weather.current.temp).toFixed(1)}${tempUnitSymbol}`;
+  feelsLike.textContent = `
+  ${parseFloat(weather.current.feels_like).toFixed(1)}${tempUnitSymbol}`;
+  windSpeed.textContent = `
+  ${parseFloat(weather.current.wind_speed).toFixed(2)}${windspeedUnitSymbol}`;
+
+  // updating units in daily forecast
+  const dailyTemps = document.querySelectorAll('.daily-temp');
+  const dailyWeather = weather.daily;
+  dailyTemps.forEach((dailyTemp, index) => {
+    dailyTemp.textContent = `
+    ${parseFloat(dailyWeather[index].temp.min).toFixed(0)}${tempUnitSymbol}
+    ~ ${parseFloat(dailyWeather[index].temp.max).toFixed(0)}${tempUnitSymbol}
+    `;
+  });
+};
+
+const getNextUnits = () => {
+  // metric: ℃ and m/s || imperial: ℉ and mph
+  const toggleUnitBtn = document.querySelector('#toggle-unit-btn');
+  if (toggleUnitBtn.textContent === '℃ | m/s') {
+    return 'metric';
+  }
+  return 'imperial';
+};
+
+const changeTextInToggleUnitBtn = () => {
+  const toggleUnitBtn = document.querySelector('#toggle-unit-btn');
+  const btnContent = toggleUnitBtn.textContent;
+  if (btnContent === '℉ | mph') {
+    toggleUnitBtn.textContent = '℃ | m/s';
+    return;
+  }
+  toggleUnitBtn.textContent = '℉ | mph';
+};
+
 const getSearchBoxInput = () => {
   const city = document.querySelector('#search-box').value;
   return city.trim();
@@ -76,4 +121,10 @@ const render = (weather, city) => {
   displayDailyForecast(weather.daily, weather.timezone_offset);
 };
 
-export { getSearchBoxInput, render };
+export {
+  changeTextInToggleUnitBtn,
+  displayWeatherWithChangeUnits,
+  getNextUnits,
+  getSearchBoxInput,
+  render,
+};

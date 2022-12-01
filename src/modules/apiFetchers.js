@@ -14,9 +14,9 @@ const fetchLatAndLong = async (city) => {
   return [data[0].lat, data[0].lon, data[0].name];
 };
 
-const fetchWeather = async (lat, lon) => {
+const fetchWeather = async (lat, lon, units = 'metric') => {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=43177022892ea041c10d42fb7db78476`
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=${units}&appid=43177022892ea041c10d42fb7db78476`
   );
   const data = await response.json();
   return data;

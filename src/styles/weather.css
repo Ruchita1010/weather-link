@@ -16,7 +16,7 @@
   font-size: clamp(3rem, 6vmax, 8rem);
 }
 
-.toggle-unit-btn {
+#toggle-unit-btn {
   padding: 6px;
   font-size: clamp(0.8rem, 1.6vmax, 1.6rem);
   border-radius: 4px;
@@ -24,7 +24,7 @@
   outline: none;
 }
 
-.toggle-unit-btn:hover {
+#toggle-unit-btn:hover {
   cursor: pointer;
 }
 
