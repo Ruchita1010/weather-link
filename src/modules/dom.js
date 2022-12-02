@@ -60,8 +60,16 @@ const displayDailyForecast = (dailyWeather, timezone) => {
   });
 };
 
-const changeBackgroundGIF = (mainWeather) => {
+const changeBackgroundGIF = (currWeather) => {
+  let mainWeather = currWeather.main;
   const gifs = require.context('../assets/bg-gifs/', false, /\.gif$/);
+  /* check for group 7xx as it has different main results like smoke, mist, haze, and many more
+  Grouping them all under 'Atmosphere' (mentioned in the documentation too)! 
+  more info at: https://openweathermap.org/weather-conditions#How-to-get-icon-URL */
+  const pattern = /^7\d{2}$/;
+  if (pattern.test(currWeather.id)) {
+    mainWeather = 'Atmosphere';
+  }
   document.body.style.backgroundImage = `url(${gifs(`./${mainWeather}.gif`)})`;
 };
 
@@ -170,7 +178,7 @@ const deleteCityFromDOM = (deleteWatchedCityBtn) => {
 
 const render = (weather, city) => {
   displayWeather(city, weather.current, weather.timezone_offset);
-  changeBackgroundGIF(weather.current.weather[0].main);
+  changeBackgroundGIF(weather.current.weather[0]);
   displayDailyForecast(weather.daily, weather.timezone_offset);
 };
 
