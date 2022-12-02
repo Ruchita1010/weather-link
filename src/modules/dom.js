@@ -120,6 +120,44 @@ const getSearchBoxInput = () => {
   return city.trim();
 };
 
+const getCityInputvalue = () => {
+  const cityInput = document.querySelector('#watched-city-input');
+  return cityInput.value;
+};
+
+const addCityToDOM = (weather, cityName) => {
+  const watchedCities = document.querySelector('#watched-cities');
+  const watchedCity = document.createElement('div');
+  watchedCity.classList.add('watched-city');
+  const images = require.context('../assets/openweathermap/', false, /\.svg$/);
+  watchedCity.innerHTML = `
+  <div class="header">
+    <p class="watched-city-name">${cityName}</p>
+    <button class="delete-watched-city-btn">x</button>
+  </div>
+  <div class="watched-city-weather-icon-wrapper">
+    <img 
+    src="${images(`./${weather.current.weather[0].icon}.svg`)}" 
+    class="watched-city-weather-icon" />
+  </div>
+  <div class="watched-city-weather-wrapper">
+    <span class="watched-city-temp">
+      ${parseFloat(weather.current.temp).toFixed(1)}℃
+    </span>
+    <span> 
+      • ${weather.current.weather[0].main}
+    </span>
+  </div>
+  `;
+  watchedCities.appendChild(watchedCity);
+};
+
+const deleteCityFromDOM = (deleteWatchedCityBtn) => {
+  const watchedCity = deleteWatchedCityBtn.parentElement.parentElement;
+  const watchedCities = document.querySelector('#watched-cities');
+  watchedCities.removeChild(watchedCity);
+};
+
 const render = (weather, city) => {
   displayWeather(city, weather.current, weather.timezone_offset);
   changeBackgroundGIF(weather.current.weather[0].main);
@@ -127,10 +165,13 @@ const render = (weather, city) => {
 };
 
 export {
+  addCityToDOM,
   changeTextInToggleUnitBtn,
   clearSearchBox,
+  deleteCityFromDOM,
   displayWeatherWithChangeUnits,
   getNextUnits,
+  getCityInputvalue,
   getSearchBoxInput,
   render,
 };

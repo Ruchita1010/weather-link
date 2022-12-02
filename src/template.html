@@ -74,7 +74,21 @@
           <div id="week-days-forecast"></div>
         </div>
       </div>
-      <div class="watch-cities"></div>
+
+      <div class="watched-cities-wrapper">
+        <p id="watched-cities-title">Watched Cities</p>
+        <form id="watched-cities-form">
+          <input
+            type="search"
+            id="watched-city-input"
+            placeholder="e.g. Tokyo"
+            required />
+          <button type="submit" class="btn" id="add-city-btn">
+            <span class="material-symbols-outlined" id="add-icon"> add </span>
+          </button>
+        </form>
+        <div id="watched-cities"></div>
+      </div>
     </div>
   </body>
 </html>

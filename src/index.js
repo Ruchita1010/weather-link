@@ -4,6 +4,7 @@ import { getWeatherFromCurrentLocation } from './modules/weather';
 import './styles/main.css';
 import './styles/weather.css';
 import './styles/daily-forecast.css';
+import './styles/watched-cities.css';
 
 const getUserLocation = (position) => {
   const lat = position.coords.latitude;

@@ -23,8 +23,3 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-
-.watch-cities {
-  flex: 1 0 400px;
-  background-color: var(--secondary-transparent);
-}
