@@ -1,5 +1,7 @@
 import { listenForEvents } from './modules/listeners';
+import { initLocalStorage } from './modules/localStorage';
 import { handleGeolocationError } from './modules/utils';
+import { getStoredWatchedCities } from './modules/watchedCities';
 import { getWeatherFromCurrentLocation } from './modules/weather';
 import './styles/main.css';
 import './styles/weather.css';
@@ -21,7 +23,13 @@ const init = () => {
   } else {
     console.log('Your browser does not support geolocation!');
   }
+
+  if (localStorage.watchedCities === undefined) {
+    initLocalStorage();
+  } else {
+    getStoredWatchedCities();
+  }
   listenForEvents();
 };
 
-init();
+window.onload = init;

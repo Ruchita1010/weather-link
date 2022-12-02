@@ -1,12 +1,18 @@
 import { fetchLatAndLong, fetchWeather } from './apiFetchers';
 import { addCityToDOM, deleteCityFromDOM, getCityInputvalue } from './dom';
+import {
+  addCityToLocalStorage,
+  deleteCityFromLocalStorage,
+  retrievedStoredData,
+} from './localStorage';
 
 const addCityToWatchedCities = async (e) => {
   e.preventDefault();
-  const city = getCityInputvalue();
-  const [lat, lon, cityName] = await fetchLatAndLong(city);
+  const inputtedCityName = getCityInputvalue();
+  const [lat, lon, city] = await fetchLatAndLong(inputtedCityName);
   const weather = await fetchWeather(lat, lon);
-  addCityToDOM(weather, cityName);
+  addCityToDOM(weather, city);
+  addCityToLocalStorage(city);
 };
 
 const deleteCityFromWatchedCities = async (e) => {
@@ -15,6 +21,21 @@ const deleteCityFromWatchedCities = async (e) => {
     return;
   }
   deleteCityFromDOM(e.target);
+  const city = e.target.previousElementSibling.textContent;
+  deleteCityFromLocalStorage(city);
 };
 
-export { addCityToWatchedCities, deleteCityFromWatchedCities };
+const getStoredWatchedCities = () => {
+  const storedWatchedCities = retrievedStoredData();
+  storedWatchedCities.forEach(async (storedWatchedCity) => {
+    const [lat, lon, city] = await fetchLatAndLong(storedWatchedCity);
+    const weather = await fetchWeather(lat, lon);
+    addCityToDOM(weather, city);
+  });
+};
+
+export {
+  addCityToWatchedCities,
+  deleteCityFromWatchedCities,
+  getStoredWatchedCities,
+};
