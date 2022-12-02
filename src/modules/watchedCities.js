@@ -1,5 +1,10 @@
 import { fetchLatAndLong, fetchWeather } from './apiFetchers';
-import { addCityToDOM, deleteCityFromDOM, getCityInputvalue } from './dom';
+import {
+  addCityToDOM,
+  checkDuplicate,
+  deleteCityFromDOM,
+  getCityInputvalue,
+} from './dom';
 import {
   addCityToLocalStorage,
   deleteCityFromLocalStorage,
@@ -9,6 +14,10 @@ import {
 const addCityToWatchedCities = async (e) => {
   e.preventDefault();
   const inputtedCityName = getCityInputvalue();
+  if (checkDuplicate(inputtedCityName)) {
+    console.log('The city is already in the list!');
+    return;
+  }
   const [lat, lon, city] = await fetchLatAndLong(inputtedCityName);
   const weather = await fetchWeather(lat, lon);
   addCityToDOM(weather, city);

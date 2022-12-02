@@ -125,6 +125,16 @@ const getCityInputvalue = () => {
   return cityInput.value;
 };
 
+const checkDuplicate = (cityName) => {
+  const watchedCityNameDivs = [
+    ...document.querySelectorAll('.watched-city-name'),
+  ];
+  const watchedCityNames = watchedCityNameDivs.map((watchedCityNameDiv) =>
+    watchedCityNameDiv.innerText.toLowerCase()
+  );
+  return watchedCityNames.includes(cityName);
+};
+
 const addCityToDOM = (weather, cityName) => {
   const watchedCities = document.querySelector('#watched-cities');
   const watchedCity = document.createElement('div');
@@ -167,6 +177,7 @@ const render = (weather, city) => {
 export {
   addCityToDOM,
   changeTextInToggleUnitBtn,
+  checkDuplicate,
   clearSearchBox,
   deleteCityFromDOM,
   displayWeatherWithChangeUnits,
