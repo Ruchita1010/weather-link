@@ -1,6 +1,6 @@
 .weather {
   flex: 2 0 400px;
-  padding: 2vmax 2.4vmax;
+  padding: 2vmax 2.4vmax 0.5vmax 2.4vmax;
 }
 
 #date {
