@@ -2,6 +2,7 @@ import { fetchLatAndLong, fetchWeather } from './apiFetchers';
 import {
   addCityToDOM,
   checkWatchedCityExists,
+  clearInputFieldValue,
   deleteCityFromDOM,
   getInputFieldValue,
 } from './dom';
@@ -14,6 +15,7 @@ import {
 const addCityToWatchedCities = async (e) => {
   e.preventDefault();
   const inputtedCityName = getInputFieldValue('watched-city-inputfield');
+  clearInputFieldValue('watched-city-inputfield');
   if (checkWatchedCityExists(inputtedCityName)) {
     console.log('The city is already in the list!');
     return;
