@@ -1,4 +1,4 @@
-import { listenForEvents } from './modules/listeners';
+import listenForEvents from './modules/listeners';
 import { initLocalStorage } from './modules/localStorage';
 import { handleGeolocationError } from './modules/utils';
 import { getStoredWatchedCities } from './modules/watchedCities';

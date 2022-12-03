@@ -1,6 +1,6 @@
 import { getDateAndDay } from './utils';
 
-const displayWeather = (cityName = 'Tokyo', currWeather, timezone) => {
+const displayCurrentWeather = (cityName = 'Tokyo', currWeather, timezone) => {
   const date = document.querySelector('#date');
   const city = document.querySelector('#city');
   const temp = document.querySelector('#temp');
@@ -22,7 +22,7 @@ const displayWeather = (cityName = 'Tokyo', currWeather, timezone) => {
 };
 
 const displayDailyForecast = (dailyWeather, timezone) => {
-  const weekDaysForecast = document.querySelector('#week-days-forecast');
+  const weekDaysForecast = document.querySelector('#weekdays-forecast');
 
   // to prevent new data of searched place getting appended
   weekDaysForecast.textContent = '';
@@ -32,7 +32,7 @@ const displayDailyForecast = (dailyWeather, timezone) => {
 
   dailyWeather.forEach((dayWeather) => {
     const weekDayForecast = document.createElement('div');
-    weekDayForecast.classList.add('week-day-forecast');
+    weekDayForecast.classList.add('weekday-forecast');
 
     let [, weekDay] = getDateAndDay(dayWeather.dt, timezone);
     // shorten the week day name
@@ -47,7 +47,7 @@ const displayDailyForecast = (dailyWeather, timezone) => {
 
     // creating new elem for each day's weather data
     weekDayForecast.innerHTML = `
-      <div class="week-day">${weekDay}</div>
+      <div class="weekday">${weekDay}</div>
       <img src="${images(`./${dayWeather.weather[0].icon}.svg`)}" 
       class="forecast-weather-icon">
       </img>
@@ -71,6 +71,27 @@ const changeBackgroundGIF = (currWeather) => {
     mainWeather = 'Atmosphere';
   }
   document.body.style.backgroundImage = `url(${gifs(`./${mainWeather}.gif`)})`;
+};
+
+// functions to be exported ⬇
+/* for toggle units */
+const changeTextInToggleUnitBtn = () => {
+  const toggleUnitBtn = document.querySelector('#toggle-unit-btn');
+  const btnContent = toggleUnitBtn.textContent;
+  if (btnContent === '℉ | mph') {
+    toggleUnitBtn.textContent = '℃ | m/s';
+    return;
+  }
+  toggleUnitBtn.textContent = '℉ | mph';
+};
+
+const getNextUnits = () => {
+  // metric: ℃ and m/s || imperial: ℉ and mph
+  const toggleUnitBtn = document.querySelector('#toggle-unit-btn');
+  if (toggleUnitBtn.textContent === '℃ | m/s') {
+    return 'metric';
+  }
+  return 'imperial';
 };
 
 const displayWeatherWithChangeUnits = (
@@ -99,41 +120,8 @@ const displayWeatherWithChangeUnits = (
   });
 };
 
-const getNextUnits = () => {
-  // metric: ℃ and m/s || imperial: ℉ and mph
-  const toggleUnitBtn = document.querySelector('#toggle-unit-btn');
-  if (toggleUnitBtn.textContent === '℃ | m/s') {
-    return 'metric';
-  }
-  return 'imperial';
-};
-
-const changeTextInToggleUnitBtn = () => {
-  const toggleUnitBtn = document.querySelector('#toggle-unit-btn');
-  const btnContent = toggleUnitBtn.textContent;
-  if (btnContent === '℉ | mph') {
-    toggleUnitBtn.textContent = '℃ | m/s';
-    return;
-  }
-  toggleUnitBtn.textContent = '℉ | mph';
-};
-
-const clearSearchBox = () => {
-  const searchBox = document.querySelector('#search-box');
-  searchBox.value = '';
-};
-
-const getSearchBoxInput = () => {
-  const city = document.querySelector('#search-box').value;
-  return city.trim();
-};
-
-const getCityInputvalue = () => {
-  const cityInput = document.querySelector('#watched-city-input');
-  return cityInput.value;
-};
-
-const checkDuplicate = (cityName) => {
+/* for watched cities */
+const checkWatchedCityExists = (cityName) => {
   const watchedCityNameDivs = [
     ...document.querySelectorAll('.watched-city-name'),
   ];
@@ -141,6 +129,16 @@ const checkDuplicate = (cityName) => {
     watchedCityNameDiv.innerText.toLowerCase()
   );
   return watchedCityNames.includes(cityName);
+};
+
+const clearInputFieldValue = (elemId) => {
+  const inputField = document.querySelector(`#${elemId}`);
+  inputField.value = '';
+};
+
+const getInputFieldValue = (elemId) => {
+  const inputValue = document.querySelector(`#${elemId}`).value;
+  return inputValue.trim();
 };
 
 const addCityToDOM = (weather, cityName) => {
@@ -151,7 +149,7 @@ const addCityToDOM = (weather, cityName) => {
   watchedCity.innerHTML = `
   <div class="header">
     <p class="watched-city-name">${cityName}</p>
-    <button class="delete-watched-city-btn">x</button>
+    <button class="btn delete-watched-city-btn">x</button>
   </div>
   <div class="watched-city-weather-icon-wrapper">
     <img 
@@ -176,21 +174,21 @@ const deleteCityFromDOM = (deleteWatchedCityBtn) => {
   watchedCities.removeChild(watchedCity);
 };
 
+/* for .weather section rendering */
 const render = (weather, city) => {
-  displayWeather(city, weather.current, weather.timezone_offset);
+  displayCurrentWeather(city, weather.current, weather.timezone_offset);
   changeBackgroundGIF(weather.current.weather[0]);
   displayDailyForecast(weather.daily, weather.timezone_offset);
 };
 
 export {
   addCityToDOM,
+  checkWatchedCityExists,
   changeTextInToggleUnitBtn,
-  checkDuplicate,
-  clearSearchBox,
+  clearInputFieldValue,
   deleteCityFromDOM,
   displayWeatherWithChangeUnits,
+  getInputFieldValue,
   getNextUnits,
-  getCityInputvalue,
-  getSearchBoxInput,
   render,
 };

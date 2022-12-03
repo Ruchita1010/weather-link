@@ -19,13 +19,8 @@
 #toggle-unit-btn {
   padding: 6px;
   font-size: clamp(0.8rem, 1.6vmax, 1.6rem);
-  border-radius: 4px;
   border: 2px solid var(--secondary);
-  outline: none;
-}
-
-#toggle-unit-btn:hover {
-  cursor: pointer;
+  border-radius: 4px;
 }
 
 #description {
@@ -41,29 +36,17 @@
 
 .weather-detail {
   display: flex;
-  align-items: center;
   background-color: var(--secondary-transparent);
   border-radius: 6px;
 }
 
-.material-symbols-outlined {
-  display: grid;
-  place-content: center;
-  font-variation-settings: 'FILL' 1, 'wght' 200, 'GRAD' 200, 'opsz' 48;
-}
-
 .weather-detail-icon {
-  height: 100%;
   padding: 4px;
   color: var(--primary);
   font-size: clamp(2rem, 3vmax, 5rem);
 }
 
 .weather-data {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   padding: 6px;
 }
 
@@ -81,33 +64,19 @@
   height: clamp(1.8rem, 2.4vmax, 4rem);
   display: flex;
   place-items: center start;
+  margin-top: 2vmax;
 }
 
-#search-btn {
+#btn-search-city {
   height: 100%;
-  border: none;
   background-color: var(--primary);
   border-bottom: 2px solid var(--secondary);
 }
 
-#search-btn:hover {
-  cursor: pointer;
-}
-
-#search-icon {
+.search-icon {
   font-size: clamp(1.4rem, 2vmax, 5rem);
   color: var(--secondary);
   font-variation-settings: 'FILL' 1, 'wght' 800, 'GRAD' 200, 'opsz' 48;
-}
-
-input[type='search'] {
-  height: 100%;
-  padding: 8px;
-  font-size: clamp(1rem, 1.4vmax, 2rem);
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid var(--secondary);
-  outline: none;
 }
 
 /* For Tablet and below */
@@ -120,7 +89,7 @@ input[type='search'] {
     margin: 4vmax 0;
   }
 
-  #search {
-    margin: 6vmax 0;
+  #city-weather-search {
+    margin-top: 6vmax;
   }
 }

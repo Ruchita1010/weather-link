@@ -5,18 +5,18 @@
   border-radius: 6px;
 }
 
-#forecast-title {
+#daily-forecast-title {
   margin-bottom: 1vmax;
   font-size: clamp(1rem, 1.5vmax, 2rem);
 }
 
-#week-days-forecast {
+#weekdays-forecast {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: 0.6vmax;
 }
 
-.week-day-forecast {
+.weekday-forecast {
   display: grid;
   place-items: center;
   padding: 6px;
@@ -24,7 +24,7 @@
   border-radius: 5px;
 }
 
-.week-day {
+.weekday {
   font-size: clamp(1rem, 1.5vmax, 1.4rem);
 }
 
@@ -38,6 +38,10 @@
 
 @media (max-width: 768px) {
   #daily-forecast {
-    margin: 8vmax 0;
+    margin: 6vmax 0;
+  }
+
+  #daily-forecast-title {
+    margin-bottom: 2vmax;
   }
 }

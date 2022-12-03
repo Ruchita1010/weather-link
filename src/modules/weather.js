@@ -1,10 +1,10 @@
 import { fetchCityName, fetchLatAndLong, fetchWeather } from './apiFetchers';
 import {
   changeTextInToggleUnitBtn,
-  clearSearchBox,
+  clearInputFieldValue,
   displayWeatherWithChangeUnits,
+  getInputFieldValue,
   getNextUnits,
-  getSearchBoxInput,
   render,
 } from './dom';
 import { getSymbolForUnits } from './utils';
@@ -32,8 +32,8 @@ const getWeatherFromCurrentLocation = async (lat, lon) => {
 
 const getWeatherForSearchedCity = async (e) => {
   e.preventDefault();
-  const searchedCity = getSearchBoxInput();
-  clearSearchBox();
+  const searchedCity = getInputFieldValue('search-city-inputfield');
+  clearInputFieldValue('search-city-inputfield');
   const [lat, lon, cityName] = await fetchLatAndLong(searchedCity);
   const weather = await fetchWeather(lat, lon);
   render(weather, cityName);

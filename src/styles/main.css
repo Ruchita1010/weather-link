@@ -23,3 +23,28 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.material-symbols-outlined {
+  display: grid;
+  place-content: center;
+  font-variation-settings: 'FILL' 1, 'wght' 200, 'GRAD' 200, 'opsz' 48;
+}
+
+.input-field {
+  height: 100%;
+  padding: 8px;
+  background-color: transparent;
+  font-size: clamp(1rem, 1.4vmax, 2rem);
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--secondary);
+}
+
+.btn {
+  border: none;
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
