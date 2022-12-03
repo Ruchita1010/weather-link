@@ -30,12 +30,22 @@ const getWeatherFromCurrentLocation = async (lat, lon) => {
   location.coords = [lat, lon];
 };
 
+const checkNeedForUnitsToggle = () => {
+  const units = getNextUnits();
+  /* if units are changed and a city is searched, the toggle btn text needs to be changed 
+  bcoz the resultant data of the searched city will be rendered in ℃ and the btn will also show ℃ */
+  if (units === 'metric') {
+    changeTextInToggleUnitBtn();
+  }
+};
+
 const getWeatherForSearchedCity = async (e) => {
   e.preventDefault();
   const searchedCity = getInputFieldValue('search-city-inputfield');
   clearInputFieldValue('search-city-inputfield');
   const [lat, lon, cityName] = await fetchLatAndLong(searchedCity);
   const weather = await fetchWeather(lat, lon);
+  checkNeedForUnitsToggle();
   render(weather, cityName);
   // set/store the lat and lon
   location.coords = [lat, lon];
