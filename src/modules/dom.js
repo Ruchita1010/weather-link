@@ -148,7 +148,7 @@ const addCityToDOM = (weather, cityName) => {
   const images = require.context('../assets/openweathermap/', false, /\.svg$/);
   watchedCity.innerHTML = `
   <div class="header">
-    <p class="watched-city-name">${cityName}</p>
+    <span class="watched-city-name">${cityName}</span>
     <button class="btn delete-watched-city-btn">x</button>
   </div>
   <div class="watched-city-weather-icon-wrapper">
