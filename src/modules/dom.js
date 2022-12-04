@@ -128,7 +128,7 @@ const checkWatchedCityExists = (cityName) => {
   const watchedCityNames = watchedCityNameDivs.map((watchedCityNameDiv) =>
     watchedCityNameDiv.innerText.toLowerCase()
   );
-  return watchedCityNames.includes(cityName);
+  return watchedCityNames.includes(cityName.toLowerCase());
 };
 
 const clearInputFieldValue = (elemId) => {
