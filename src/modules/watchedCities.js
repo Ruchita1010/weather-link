@@ -37,7 +37,7 @@ const addCityToWatchedCities = async (e) => {
   }
 };
 
-const deleteCityFromWatchedCities = async (e) => {
+const deleteCityFromWatchedCities = (e) => {
   const check = e.target.classList.contains('delete-watched-city-btn');
   if (!check) {
     return;
