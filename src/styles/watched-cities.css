@@ -17,7 +17,6 @@
   height: clamp(1.8rem, 2.4vmax, 4rem);
   display: flex;
   place-items: center;
-  margin-bottom: 2rem;
 }
 
 #btn-add-city {
@@ -34,9 +33,11 @@
 }
 
 #watched-cities {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 1vmax;
+  margin-top: 2vmax;
 }
 
 .watched-city {

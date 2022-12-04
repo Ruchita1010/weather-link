@@ -50,8 +50,4 @@ const getSymbolForUnits = (units) => {
   return [tempUnit, windSpeedUnit];
 };
 
-const handleGeolocationError = (err) => {
-  console.log(err.message);
-};
-
-export { getDateAndDay, getSymbolForUnits, handleGeolocationError };
+export { getDateAndDay, getSymbolForUnits };

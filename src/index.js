@@ -1,6 +1,5 @@
 import listenForEvents from './modules/listeners';
 import { initLocalStorage } from './modules/localStorage';
-import { handleGeolocationError } from './modules/utils';
 import { getStoredWatchedCities } from './modules/watchedCities';
 import { getWeatherFromCurrentLocation } from './modules/weather';
 import './styles/main.css';
@@ -12,6 +11,10 @@ const getUserLocation = (position) => {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
   getWeatherFromCurrentLocation(lat, lon);
+};
+
+const handleGeolocationError = (err) => {
+  console.log(err.message);
 };
 
 const init = () => {

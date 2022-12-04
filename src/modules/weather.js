@@ -2,6 +2,7 @@ import { fetchCityName, fetchLatAndLong, fetchWeather } from './apiFetchers';
 import {
   changeTextInToggleUnitBtn,
   clearInputFieldValue,
+  displayErrorScreen,
   displayWeatherWithChangeUnits,
   getInputFieldValue,
   getNextUnits,
@@ -23,11 +24,15 @@ let location = {
 };
 
 const getWeatherFromCurrentLocation = async (lat, lon) => {
-  const cityName = await fetchCityName(lat, lon);
-  const weather = await fetchWeather(lat, lon);
-  render(weather, cityName);
-  // set/store the lat and lon
-  location.coords = [lat, lon];
+  try {
+    const cityName = await fetchCityName(lat, lon);
+    const weather = await fetchWeather(lat, lon);
+    render(weather, cityName);
+    // set/store the lat and lon
+    location.coords = [lat, lon];
+  } catch (error) {
+    displayErrorScreen(error.message);
+  }
 };
 
 const checkNeedForUnitsToggle = () => {
@@ -43,21 +48,29 @@ const getWeatherForSearchedCity = async (e) => {
   e.preventDefault();
   const searchedCity = getInputFieldValue('search-city-inputfield');
   clearInputFieldValue('search-city-inputfield');
-  const [lat, lon, cityName] = await fetchLatAndLong(searchedCity);
-  const weather = await fetchWeather(lat, lon);
-  checkNeedForUnitsToggle();
-  render(weather, cityName);
-  // set/store the lat and lon
-  location.coords = [lat, lon];
+  try {
+    const [lat, lon, cityName] = await fetchLatAndLong(searchedCity);
+    const weather = await fetchWeather(lat, lon);
+    checkNeedForUnitsToggle();
+    render(weather, cityName);
+    // set/store the lat and lon
+    location.coords = [lat, lon];
+  } catch (error) {
+    displayErrorScreen(error.message);
+  }
 };
 
 const toggleUnits = async () => {
   const [lat, lon] = location.coords;
   const units = getNextUnits();
-  const weather = await fetchWeather(lat, lon, units);
-  const [tempUnitSymbol, windspeedUnitSymbol] = getSymbolForUnits(units);
-  changeTextInToggleUnitBtn();
-  displayWeatherWithChangeUnits(weather, tempUnitSymbol, windspeedUnitSymbol);
+  try {
+    const weather = await fetchWeather(lat, lon, units);
+    const [tempUnitSymbol, windspeedUnitSymbol] = getSymbolForUnits(units);
+    changeTextInToggleUnitBtn();
+    displayWeatherWithChangeUnits(weather, tempUnitSymbol, windspeedUnitSymbol);
+  } catch (error) {
+    displayErrorScreen(error.message);
+  }
 };
 
 export {

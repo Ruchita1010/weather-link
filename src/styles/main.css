@@ -48,3 +48,18 @@ body {
 .btn:hover {
   cursor: pointer;
 }
+
+.error-screen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4vmax;
+  background-color: var(--secondary-transparent);
+}
+
+.error-message {
+  font-size: 3.6vmax;
+}

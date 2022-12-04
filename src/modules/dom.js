@@ -174,6 +174,41 @@ const deleteCityFromDOM = (deleteWatchedCityBtn) => {
   watchedCities.removeChild(watchedCity);
 };
 
+/* for error display */
+const displayErrorScreen = (errMessage) => {
+  const container = document.querySelector('.container');
+  container.innerHTML = `
+  <div class="error-screen">
+    <div>
+    <p class="error-message">Oops! Something went worong.</p>
+    <p class="error-message" >We mean wrong ;)</p>
+    </div>
+    <div>
+      <p>In case you're a curious, here's the error:</p>
+      </p>${errMessage}</p>
+    </div>
+  </div>`;
+};
+
+const displayAlertForWatchedCityInput = () => {
+  const watchedCitiesWrapper = document.querySelector(
+    '.watched-cities-wrapper'
+  );
+  const watchedCities = document.querySelector('#watched-cities');
+  const alertMessage = document.createElement('p');
+  alertMessage.id = 'alert-msg';
+  alertMessage.innerText = 'The city is already in the list!';
+  watchedCitiesWrapper.insertBefore(alertMessage, watchedCities);
+};
+
+const clearAlertForWatchedCityInput = () => {
+  const watchedCitiesWrapper = document.querySelector(
+    '.watched-cities-wrapper'
+  );
+  const alertMessage = document.querySelector('#alert-msg');
+  watchedCitiesWrapper.removeChild(alertMessage);
+};
+
 /* for .weather section rendering */
 const render = (weather, city) => {
   displayCurrentWeather(city, weather.current, weather.timezone_offset);
@@ -185,8 +220,11 @@ export {
   addCityToDOM,
   checkWatchedCityExists,
   changeTextInToggleUnitBtn,
+  clearAlertForWatchedCityInput,
   clearInputFieldValue,
   deleteCityFromDOM,
+  displayAlertForWatchedCityInput,
+  displayErrorScreen,
   displayWeatherWithChangeUnits,
   getInputFieldValue,
   getNextUnits,
