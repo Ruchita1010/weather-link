@@ -35,17 +35,14 @@
 
 #watched-cities {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 1vmax;
   margin-top: 2vmax;
 }
 
 .watched-city {
-  padding: 10px;
+  margin-bottom: 1vmax;
+  padding: 10px 10px 0px 10px;
   background-color: transparent;
-  border: 1px solid var(--color-cultured);
-  border-radius: 5px;
+  border-bottom: 1px solid var(--color-cultured);
 }
 
 .watched-city .header {
@@ -55,38 +52,25 @@
 }
 
 .watched-city-name {
-  font-size: clamp(1rem, 1.4vmax, 1.8rem);
+  font-size: clamp(1rem, 1.8vmax, 2rem);
   overflow-wrap: anywhere;
 }
 
 .delete-watched-city-btn {
-  padding: 2px 8px;
-  font-size: clamp(0.4rem, 2vmax, 1.2rem);
+  padding: 2px 6px;
+  font-size: clamp(0.4rem, 1.2vmax, 1.2rem);
   background-color: var(--color-cultured);
   text-align: center;
   border-radius: 50%;
 }
 
-.watched-city-weather-icon-wrapper {
-  width: 100%;
+.watched-city-weather {
+  display: flex;
+  align-items: center;
+  font-size: clamp(0.4rem, 1.6vmax, 1.6rem);
 }
 
 .watched-city-weather-icon {
-  width: 60%;
-  display: block;
-  margin: 0 auto;
-}
-
-.watched-city-weather-wrapper {
-  font-size: clamp(1rem, 1.6vmax, 1rem);
-}
-
-.watched-city-temp {
-  font-size: clamp(1rem, 1.6vmax, 2rem);
-}
-
-@media (max-width: 768px) {
-  .watched-cities-wrapper {
-    flex: 1 0 400px;
-  }
+  width: 4rem;
+  height: 4rem;
 }

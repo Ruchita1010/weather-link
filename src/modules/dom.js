@@ -151,18 +151,14 @@ const addCityToDOM = (weather, cityName) => {
     <span class="watched-city-name">${cityName}</span>
     <button class="btn delete-watched-city-btn">x</button>
   </div>
-  <div class="watched-city-weather-icon-wrapper">
+  <div class="watched-city-weather">
+    <p>
+      ${parseFloat(weather.current.temp).toFixed(1)}℃
+       | ${weather.current.weather[0].main}
+    </p>
     <img 
     src="${images(`./${weather.current.weather[0].icon}.svg`)}" 
     class="watched-city-weather-icon" />
-  </div>
-  <div class="watched-city-weather-wrapper">
-    <span class="watched-city-temp">
-      ${parseFloat(weather.current.temp).toFixed(1)}℃
-    </span>
-    <span> 
-      • ${weather.current.weather[0].main}
-    </span>
   </div>
   `;
   watchedCities.appendChild(watchedCity);
