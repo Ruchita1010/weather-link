@@ -1,13 +1,5 @@
 #daily-forecast {
-  padding: 1vmax;
   margin-top: 3vmax;
-  background-color: var(--secondary-transparent);
-  border-radius: 6px;
-}
-
-#daily-forecast-title {
-  margin-bottom: 1vmax;
-  font-size: clamp(1rem, 1.5vmax, 2rem);
 }
 
 #weekdays-forecast {
@@ -19,17 +11,19 @@
 .weekday-forecast {
   display: grid;
   place-items: center;
-  padding: 6px;
-  border: 1px solid var(--secondary);
+  padding: 0.8vmax;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-cultured);
   border-radius: 5px;
 }
 
 .weekday {
-  font-size: clamp(1rem, 1.5vmax, 1.4rem);
+  font-size: clamp(1rem, 1.5vmax, 1.6rem);
 }
 
 .forecast-weather-icon {
-  width: 70%;
+  width: 60%;
 }
 
 .daily-temp {

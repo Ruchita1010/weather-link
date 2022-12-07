@@ -4,7 +4,8 @@
   align-items: center;
   height: 100vh;
   padding: 2vmax 2.4vmax;
-  background-color: var(--secondary-transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   overflow-y: auto;
 }
 
@@ -22,8 +23,8 @@
 #btn-add-city {
   height: 100%;
   padding: 4px;
-  background-color: var(--secondary);
-  border: 1px solid var(--secondary);
+  background-color: var(--color-cultured);
+  border: 1px solid var(--color-cultured);
 }
 
 .add-icon {
@@ -43,7 +44,8 @@
 .watched-city {
   padding: 10px;
   background-color: transparent;
-  border: 1px solid var(--secondary);
+  border: 1px solid var(--color-cultured);
+  border-radius: 5px;
 }
 
 .watched-city .header {
@@ -60,7 +62,7 @@
 .delete-watched-city-btn {
   padding: 2px 8px;
   font-size: clamp(0.4rem, 2vmax, 1.2rem);
-  background: var(--secondary-transparent);
+  background-color: var(--color-cultured);
   text-align: center;
   border-radius: 50%;
 }
@@ -76,7 +78,6 @@
 }
 
 .watched-city-weather-wrapper {
-  width: 100%;
   font-size: clamp(1rem, 1.6vmax, 1rem);
 }
 
@@ -86,7 +87,6 @@
 
 @media (max-width: 768px) {
   .watched-cities-wrapper {
-    width: 100%;
     flex: 1 0 400px;
   }
 }
