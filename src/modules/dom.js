@@ -1,4 +1,5 @@
 import { getDateAndDay } from './utils';
+import defaultImg from '../assets/bg-imgs/Default.jpg';
 
 const displayCurrentWeather = (cityName = 'Tokyo', currWeather, timezone) => {
   const date = document.querySelector('#date');
@@ -184,6 +185,7 @@ const displayErrorScreen = (errMessage) => {
       </p>${errMessage}</p>
     </div>
   </div>`;
+  document.body.style.backgroundImage = `url(${defaultImg})`;
 };
 
 const displayAlertForWatchedCityInput = () => {

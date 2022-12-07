@@ -11,8 +11,7 @@
 }
 
 body {
-  background: url(../assets/bg-imgs/Thunderstorm.jpg) no-repeat center
-    center/cover;
+  background: url(../assets/bg-imgs/Default.jpg) no-repeat center center/cover;
   background-attachment: fixed;
 }
 
@@ -67,7 +66,7 @@ body {
 }
 
 .error-message {
-  font-size: 3.6vmax;
+  font-size: 5vmax;
 }
 
 @media (max-width: 480px) {
