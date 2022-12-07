@@ -61,9 +61,9 @@ const displayDailyForecast = (dailyWeather, timezone) => {
   });
 };
 
-const changeBackgroundGIF = (currWeather) => {
+const changeBackgroundImage = (currWeather) => {
   let mainWeather = currWeather.main;
-  const gifs = require.context('../assets/bg-imgs/', false, /\.jpg$/);
+  const images = require.context('../assets/bg-imgs/', false, /\.jpg$/);
   /* check for group 7xx as it has different main results like smoke, mist, haze, and many more
   Grouping them all under 'Atmosphere' (mentioned in the documentation too)! 
   more info at: https://openweathermap.org/weather-conditions#How-to-get-icon-URL */
@@ -71,7 +71,8 @@ const changeBackgroundGIF = (currWeather) => {
   if (pattern.test(currWeather.id)) {
     mainWeather = 'Atmosphere';
   }
-  document.body.style.backgroundImage = `url(${gifs(`./${mainWeather}.jpg`)})`;
+  document.body.style.backgroundImage = `
+    url(${images(`./${mainWeather}.jpg`)})`;
 };
 
 // functions to be exported ⬇
@@ -210,7 +211,7 @@ const clearAlertForWatchedCityInput = () => {
 /* for .weather section rendering */
 const render = (weather, city) => {
   displayCurrentWeather(city, weather.current, weather.timezone_offset);
-  changeBackgroundGIF(weather.current.weather[0]);
+  changeBackgroundImage(weather.current.weather[0]);
   displayDailyForecast(weather.daily, weather.timezone_offset);
 };
 
