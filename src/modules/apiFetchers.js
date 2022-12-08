@@ -1,6 +1,6 @@
 const fetchCityName = async (lat, lon) => {
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=43177022892ea041c10d42fb7db78476`
+    `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=43177022892ea041c10d42fb7db78476`
   );
   const data = await response.json();
   return data[0].name;
@@ -8,7 +8,7 @@ const fetchCityName = async (lat, lon) => {
 
 const fetchLatAndLong = async (city) => {
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=43177022892ea041c10d42fb7db78476`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=43177022892ea041c10d42fb7db78476`
   );
   const data = await response.json();
   return [data[0].lat, data[0].lon, data[0].name];
