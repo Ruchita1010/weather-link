@@ -14,7 +14,9 @@ const getUserLocation = (position) => {
 };
 
 const handleGeolocationError = (err) => {
-  console.log(err.message);
+  // if location denied/blocked, default to Tokyo's lat and lon
+  alert('Cannot access location! Defaulting to Tokyo');
+  getWeatherFromCurrentLocation(35.672855, 139.817413);
 };
 
 const init = () => {
@@ -24,7 +26,7 @@ const init = () => {
       handleGeolocationError
     );
   } else {
-    console.log('Your browser does not support geolocation!');
+    alert('Your browser does not support geolocation!');
   }
 
   if (localStorage.watchedCities === undefined) {
